@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Soul Forge — Additive SOUL Upgrade</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <div class="title">Soul Forge</div>
+      <div class="sub">Additive SOUL.md upgrades — preview, diff, seal, (optional) apply</div>
+    </div>
+    <div class="status" id="status">disconnected</div>
+  </header>
+
+  <main class="grid">
+    <section class="panel">
+      <div class="panel-h">Base SOUL.md</div>
+      <div class="row">
+        <label>SOUL path</label>
+        <input id="soulPath" value="/home/frosty/.openclaw/workspace/SOUL.md" />
+        <button id="loadBase">Load</button>
+      </div>
+      <textarea id="baseText" spellcheck="false" placeholder="(loaded from server)"></textarea>
+    </section>
+
+    <section class="panel span2" id="doctorPanel">
+      <div class="panel-h">Soul Doctor (Phase 1)</div>
+      <div class="form">
+        <div class="hint">Fill these out, then click <b>Generate Addendum</b> to populate the addendum textarea.</div>
+
+        <div class="field">
+          <div class="label">Sliders (1–10)</div>
+          <div class="control" id="sliders"></div>
+        </div>
+
+        <div class="field">
+          <div class="label">Vows — Always</div>
+          <div class="control">
+            <textarea id="vowAlways" class="smallTA" spellcheck="false" placeholder="One per line…"></textarea>
+          </div>
+        </div>
+        <div class="field">
+          <div class="label">Vows — Never</div>
+          <div class="control">
+            <textarea id="vowNever" class="smallTA" spellcheck="false" placeholder="One per line…"></textarea>
+          </div>
+        </div>
+        <div class="field">
+          <div class="label">Vows — Ask first</div>
+          <div class="control">
+            <textarea id="vowAskFirst" class="smallTA" spellcheck="false" placeholder="One per line…"></textarea>
+          </div>
+        </div>
+
+        <div class="field">
+          <div class="label">Essence — stressed</div>
+          <div class="control"><textarea id="essStress" class="smallTA" spellcheck="false" placeholder="If the user is stressed, I…"></textarea></div>
+        </div>
+        <div class="field">
+          <div class="label">Essence — excited</div>
+          <div class="control"><textarea id="essExcited" class="smallTA" spellcheck="false" placeholder="If the user is excited, I…"></textarea></div>
+        </div>
+        <div class="field">
+          <div class="label">Essence — group chat</div>
+          <div class="control"><textarea id="essGroup" class="smallTA" spellcheck="false" placeholder="If in a group chat, I…"></textarea></div>
+        </div>
+        <div class="field">
+          <div class="label">Essence — humor</div>
+          <div class="control"><textarea id="essHumor" class="smallTA" spellcheck="false" placeholder="Humor preferences / limits…"></textarea></div>
+        </div>
+        <div class="field">
+          <div class="label">Essence — boundaries</div>
+          <div class="control"><textarea id="essBoundaries" class="smallTA" spellcheck="false" placeholder="Boundary philosophy / what to do when uncertain…"></textarea></div>
+        </div>
+
+        <div class="row right">
+          <button id="generateAddendum">Generate Addendum</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-h">Addendum (what you want to add/change)</div>
+      <div class="row">
+        <label>Optional title</label>
+        <input id="addendumTitle" value="Soul tuning addendum" />
+        <button id="insertTemplate">Insert template</button>
+      </div>
+      <textarea id="addendumText" spellcheck="false" placeholder="Write addendum here…"></textarea>
+      <div class="row right">
+        <button id="preview">Preview + Diff</button>
+        <button id="apply" class="danger">Apply to SOUL.md (creates backup)</button>
+      </div>
+      <div class="hint">Non-destructive by default. Apply requires explicit click.</div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-h">Diff (base → combined)</div>
+      <pre id="diffBox" class="pre"></pre>
+    </section>
+
+    <section class="panel">
+      <div class="panel-h">Combined (preview)</div>
+      <pre id="combinedBox" class="pre"></pre>
+      <div class="row">
+        <div class="kv">
+          <div class="k">seal</div>
+          <div class="v" id="sealPath">—</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div>Runs locally. Outputs: <code>outputs/</code> and <code>soul-seal/</code>.</div>
+    <div class="muted" id="serverInfo">—</div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+# Generated artifacts
+outputs/
+
+# Hash seals / local audit trail (keep local by default)
+soul-seal/
+
+# OS/editor
+.DS_Store
+*.swp
+scripts/__pycache__/
