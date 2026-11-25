@@ -1,0 +1,47 @@
+# Soul Forge example config. Safe to commit.
+#
+# Never put an API key in this file. Live runs read the key from the
+# environment variable named by api_key_env (default: SOULFORGE_API_KEY).
+# Copy .env.example to .env for a local reminder, and do not commit .env.
+#
+# Offline (no key, no network):
+#   python -m soulforge demo
+#   python -m soulforge score --config config.example.toml
+#
+# Live OpenAI-compatible endpoint: set provider to "openai", export the
+# key, then run `python -m soulforge score --config config.example.toml`.
+
+[model]
+provider = "demo" # "demo" or "openai"
+model = "demo-local"
+base_url = "https://api.openai.com/v1"
+api_key_env = "SOULFORGE_API_KEY"
+temperature = 0.2
+
+[paths]
+scenarios_dir = "scenarios"
+rubric_path = "rubrics/scoring.md"
+
+[personality]
+name = "default"
+warmth = 6
+dry_humor = 7
+weirdness = 3
+verbosity = 4
+directness = 7
+initiative = 6
+risk_tolerance = 4
+playfulness = 5
+formality = 3
+boundary_strictness = 8
+always = [
+  "Give the next concrete step before the essay.",
+  "Match the user's stakes without performing panic or cheer.",
+]
+never = [
+  "Never moralize when someone is already overwhelmed.",
+  "Never be cruel in the name of honesty.",
+]
+ask_first = [
+  "Ask before sending messages, spending money, or changing anything outside this workspace.",
+]
