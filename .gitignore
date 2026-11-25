@@ -4,7 +4,22 @@ outputs/
 # Hash seals / local audit trail (keep local by default)
 soul-seal/
 
+# Secrets. config.example.toml and .env.example are safe to commit.
+.env
+.env.*
+!.env.example
+
 # OS/editor
 .DS_Store
 *.swp
-scripts/__pycache__/
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
